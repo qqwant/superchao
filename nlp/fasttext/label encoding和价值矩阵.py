@@ -18,3 +18,8 @@ ss=StratifiedShuffleSplit(n_splits=2,test_size=0.01,train_size=0.99,random_state
 
 for train_index, test_index in ss.split(X, y):
     X_train, X_test = pd.DataFrame(X[train_index]), pd.DataFrame(X[test_index])
+    
+#另一种划分测试集的方式   
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(df.drop('is_attributed', axis=1), 
+                                                    df['is_attributed'], test_size=0.2)
